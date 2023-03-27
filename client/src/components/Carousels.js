@@ -1,14 +1,20 @@
 import React from 'react'
 import Carousel from 'react-bootstrap/Carousel';
+import styled from 'styled-components'
 
+
+const Img = styled.img`
+object-fit: cover;
+width: 400px;
+`
 export default function Carousels() {
   return (
     <>
     <Carousel fade>
       <Carousel.Item>
-        <img
+        <Img
           className="d-block w-100"
-          src="democar.jpg"
+          src="democar2.jpg"
           alt="First slide"
           height="669px"
         />
@@ -18,7 +24,7 @@ export default function Carousels() {
         </Carousel.Caption>
       </Carousel.Item>
       <Carousel.Item>
-        <img
+        <Img
           className="d-block w-100"
           src="./democar1.jpg"
           alt="Second slide"
@@ -31,7 +37,7 @@ export default function Carousels() {
         </Carousel.Caption>
       </Carousel.Item>
       <Carousel.Item>
-        <img
+        <Img
           className="d-block w-100"
           src="./democar.jpg"
           alt="Third slide"
