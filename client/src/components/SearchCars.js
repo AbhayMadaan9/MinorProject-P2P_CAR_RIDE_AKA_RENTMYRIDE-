@@ -1,11 +1,13 @@
 import React from 'react'
 import styled from 'styled-components'
+import TextField from '@mui/material/TextField'
 
 const Main = styled.div`
 display: flex;
 flex-direction: column;
 justify-content: center;
 align-items: center;
+gap: 12px;
 `
 const First = styled.div`
 display: flex;
@@ -18,6 +20,7 @@ display: flex;
 flex-direction: row;
 justify-content: center;
 align-items: center;
+gap: 10px;
 `
 const Headings = styled.div`
 font-size: xx-large;
@@ -25,7 +28,7 @@ letter-spacing: 1px;
 font-weight: 500;
 font-family: 'Oswald', sans-serif;
 `
-const Input = styled.input``
+
 const Comp = styled.div``
 
 export default function SearchCars() {
@@ -34,13 +37,14 @@ export default function SearchCars() {
   return (
     <>
     <Main>
-        <First><Headings><p>Find you perfect match</p></Headings>
-        <span>Set your location data time</span></First>
+        <First><Headings>Find you perfect match</Headings>
+        <p>Set your location data time</p></First>
         <Second>
-           <Input placeholder='PickUp Date'/>
-           <Input placeholder='PickUp Time'/>
-           <Input placeholder='Drop date'/>
-           <Input placeholder='Drop time'/>
+          <TextField label="PickUp Date"/>
+           <TextField label='PickUp Date'/>
+           <TextField label='PickUp Time'/>
+           <TextField label='Drop date'/>
+           <TextField label='Drop time'/>
         </Second>
     </Main>
     </>
