@@ -91,7 +91,7 @@ export default function Footer() {
             </Icons>
         </Section>
         <Section>
-          <Link to="/home" style={{textDecoration: "none", color: "white"}}><h5>Home</h5></Link>
+          <Link to="/" style={{textDecoration: "none", color: "white"}}><h5>Home</h5></Link>
           <Link to="/faqs" style={{textDecoration: "none", color: "white"}}> <h5>FAQs</h5></Link>
           <Link to="/policy" style={{textDecoration: "none", color: "white"}}><h5>Policy</h5></Link>
           <Link to="/blog" style={{textDecoration: "none", color: "white"}}><h5>Blog</h5></Link>

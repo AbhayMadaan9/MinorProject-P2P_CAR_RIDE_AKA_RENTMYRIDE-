@@ -1,4 +1,4 @@
-import Button  from '@mui/material/Button'
+//import Button  from '@mui/material/Button'
 import React from 'react'
 import styled from 'styled-components'
 import car from '../SampleCars.js'
@@ -43,12 +43,13 @@ export default function RentalCars() {
     <Main>
         <Headings>
             <Text>Our Rented Cars</Text>
-            {/* <Butt><Button variant="contained" sx={{backgroundColor: "#00C9A7"}}>Explore More</Button></Butt> */}
+            {/* <Butt><Button variant="contained" >Explore More</Button></Butt> */}
         </Headings>
         <Cars>
-            {car.map(ite=>{
-                {<CarCard image = {ite.image} price = {ite.price} name = {ite.name}/>}
-            })}
+            {car.map(ite=>(
+               <CarCard car={ite}/>
+            )  
+            )}
         </Cars>
     </Main>
     </>

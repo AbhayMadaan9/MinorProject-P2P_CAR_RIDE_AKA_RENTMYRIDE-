@@ -34,9 +34,9 @@ export default function Remainder() {
         <p>Sign up and send the best ideal for you</p>
         <First>
         <TextField label="Enter your email address" sx={{width: "18rem"}} type='email'/>
-        {/* <Button variant="contained" color='primary' sx={{height: "4rem", width: "8rem"}}> 
+        <Button variant="contained" color='primary' sx={{height: "4rem", width: "8rem"}}> 
           Suscribe
-        </Button>*/}
+        </Button>
         </First>
         
     </Main>

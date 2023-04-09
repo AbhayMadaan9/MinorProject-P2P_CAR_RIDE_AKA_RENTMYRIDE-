@@ -15,7 +15,6 @@ justify-content: center;
 `
 const Pic = styled.div`
 flex: 1;
-
 `
 const Questions = styled.div`
 flex: 1;
@@ -53,7 +52,7 @@ export default function FAQ() {
         <Questions>
           <Heading>
             <p>FAQ</p>
-            {/* <Button variant="contained" sx={{backgroundColor: "#00C9A7"}}>View all</Button> */}
+            <Button variant="contained" sx={{backgroundColor: "#00C9A7"}}>View all</Button>
             </Heading>
         <Accordion sx={{borderRadius: "10px"}}>
         <AccordionSummary

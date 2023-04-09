@@ -6,6 +6,8 @@ import {
   Route,
   Link
 } from "react-router-dom";
+
+import Cars from './Cars';
 export default function () {
   return (
     <>
@@ -13,6 +15,9 @@ export default function () {
       <Switch>
         <Route exact path="/">
           <Home/>
+        </Route>
+        <Route exact path="/cars">
+          <Cars/>
         </Route>
       </Switch>
     </Router >

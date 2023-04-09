@@ -1,11 +1,11 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom/cjs/react-router-dom.min'
 
 
 
 const Main = styled.div`
-padding: 5px;
+padding: 12px;
 display: flex;
 flex-direction: row;
 justify-content: space-around;
@@ -14,7 +14,6 @@ background-color: darkblue;
 color: white;
 `
 const First = styled.div`
-
 `
 const Second = styled.div`
 display: flex;
@@ -32,7 +31,7 @@ align-items: center;
 gap: 20px;
 `
 const Headings = styled.div`
-font-size: x-large;
+font-size: large;
 letter-spacing: 1px;
 font-weight: 500;
 font-family: 'Oswald', sans-serif;
@@ -45,10 +44,10 @@ export default function Navbar() {
     <Main>
         <First>Logo</First>
         <Second>
-            <Headings><p>Home</p></Headings>
-            <Headings><p>Models</p></Headings>
-            <Headings><p>About Us</p></Headings>
-            <Headings><p>Contact Us</p></Headings>
+            <Headings><Link to="/" style={{textDecoration: "none", color: "white"}}><p>Home</p></Link></Headings>
+            <Headings><Link to="/cars" style={{textDecoration: "none", color: "white"}}><p>Models</p> </Link></Headings>
+            <Headings><Link to="/about" style={{textDecoration: "none", color: "white"}}><p>About Us</p></Link></Headings>
+            <Headings><Link to="/contact" style={{textDecoration: "none", color: "white"}}><p>Contact Us</p></Link></Headings>
         </Second>
         <Third>
            <Headings><p>Login</p></Headings>
