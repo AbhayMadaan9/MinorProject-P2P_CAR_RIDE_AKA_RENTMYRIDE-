@@ -13,12 +13,13 @@ flex-direction: column;
 align-items: center;
 justify-content: center;
 gap: 20px;
+padding: 24px;
+margin-top: 44px;
 `
 const Heading = styled.div`
 font-size: xx-large;
 letter-spacing: 1px;
 font-weight: 550;
-font-family: 'Oswald', sans-serif;
 cursor: pointer;
 word-spacing: 2px;
 `
@@ -41,7 +42,7 @@ font-size: large;
 font-weight: 600;
 `
 const Span = styled.span`
-font-weight: 300;   
+font-weight: 200;   
 `
 export default function HappyCustomers() {
     const name = "Mansur"

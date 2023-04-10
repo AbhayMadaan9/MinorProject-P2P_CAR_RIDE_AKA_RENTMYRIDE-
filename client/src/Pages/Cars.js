@@ -89,7 +89,7 @@ flex-direction: row;
 align-items: center;
 justify-content: center;
 gap: 8px;
-background-color: #4B825F;
+background-color: #D8EADD;
 border-radius: 16px;
 `
 const TypeHeading = styled.div`
@@ -107,6 +107,8 @@ const Third = styled.div`
   align-items: flex-start;
   background-color: #D8EADD;
   padding: 20px;
+  width: 100%;
+  /* z-index: -1; */
 `
 
 const Filters = styled.div`
@@ -136,6 +138,11 @@ align-items: left;
 justify-content: center;
 flex-wrap: wrap;
 `
+const Logo = styled.img`
+width: 200px;
+height: 70px;
+object-fit: cover;
+`
 
 
 export default function Cars() {
@@ -145,7 +152,7 @@ export default function Cars() {
       <Nav>
       <First>
         <Left>
-          <p>logo</p>
+        <Logo src="./logo.jpg" alt="logo" />
         </Left>
         <Right>
         <Link to="/faqs" style={{textDecoration: "none", fontsize: "large", color: "black"}}><h4>FAQs</h4></Link>

@@ -10,7 +10,6 @@ display: flex;
 flex-direction: row;
 justify-content: space-around;
 align-items: center;
-background-color: darkblue;
 color: white;
 `
 const First = styled.div`
@@ -21,6 +20,7 @@ flex-direction: row;
 justify-content: center;
 align-items: center;
 gap: 20px;
+
 
 `
 const Third = styled.div`
@@ -34,15 +34,29 @@ const Headings = styled.div`
 font-size: large;
 letter-spacing: 1px;
 font-weight: 500;
-font-family: 'Oswald', sans-serif;
 cursor: pointer;
 `
-
+const Button = styled.button`
+background-color: #00C9A7;
+color: white;
+padding: 8px;
+border: 0px;
+font-size: large;
+border-radius: 8px;
+`
+const Logo = styled.img`
+width: 200px;
+height: 60px;
+object-fit: cover;
+background: none;
+`
 export default function Navbar() {
   return (
     <>
     <Main>
-        <First>Logo</First>
+        <First>
+          <Logo src="./logo.jpg" alt="logo" />
+        </First>
         <Second>
             <Headings><Link to="/" style={{textDecoration: "none", color: "white"}}><p>Home</p></Link></Headings>
             <Headings><Link to="/cars" style={{textDecoration: "none", color: "white"}}><p>Models</p> </Link></Headings>
@@ -51,7 +65,7 @@ export default function Navbar() {
         </Second>
         <Third>
            <Headings><p>Login</p></Headings>
-            <Headings><p>Sign Up</p></Headings>
+            <Headings><p><Button>Sign Up</Button></p></Headings>
         </Third>
     </Main>
     </>

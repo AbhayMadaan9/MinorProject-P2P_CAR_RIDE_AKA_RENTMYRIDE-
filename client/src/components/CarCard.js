@@ -26,14 +26,14 @@ height: 120px;
 object-fit: cover;
 border-radius: 10px 10px 0px 0px;
 `
-const Price = styled.div`
-width: 100%;
-display: flex;
-flex-direction: row;
-align-items: center;
-justify-content: space-between;
-padding: 4px;
-`
+// const Price = styled.div`
+// width: 100%;
+// display: flex;
+// flex-direction: row;
+// align-items: center;
+// justify-content: space-between;
+// padding: 4px;
+// `
 const Detail = styled.div`
 width: 100%;
 display: flex;
@@ -54,6 +54,7 @@ padding: 8px;
 border: 0px;
 font-size: x-large;
 border-radius: 12px;
+width: 100%;
 `
 
 
@@ -70,11 +71,8 @@ export default function CarCard(props) {
           <Detailname><AirlineSeatReclineNormalIcon/> 5</Detailname>
           <Detailname><PrecisionManufacturingIcon/> Automatic</Detailname>
         </Detail>
-        <Price>
        <Pricename>$540</Pricename>
        <Button>Book</Button>
-        </Price>
-        {/* <Button variant="contained" sx={{backgroundColor: "#00C9A7"}}>Reserve Deal</Button> */}
     </Main>
     </>
   )

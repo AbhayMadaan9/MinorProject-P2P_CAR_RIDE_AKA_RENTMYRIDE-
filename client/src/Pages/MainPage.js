@@ -8,6 +8,10 @@ import {
 } from "react-router-dom";
 
 import Cars from './Cars';
+import Login from './Login';
+import Signup from './Signup'
+
+
 export default function () {
   return (
     <>
@@ -18,6 +22,12 @@ export default function () {
         </Route>
         <Route exact path="/cars">
           <Cars/>
+        </Route>
+        <Route exact path="/login">
+          <Login/>
+        </Route>
+        <Route exact path="/signup">
+          <Signup/>
         </Route>
       </Switch>
     </Router >

@@ -5,11 +5,10 @@ import styled from 'styled-components'
 const Main = styled.div`
 display: flex;
 flex-direction: row;
-justify-content: space-around;
+justify-content: space-between;
 align-items: center;
-background-color: gainsboro;
-min-height: 650px;
 color: white;
+height: fit-content;
 `
 const Left = styled.div`
 width: 30rem;
@@ -19,6 +18,7 @@ justify-content: center;
 align-items: center;
 gap: 15px;
 text-align: center;
+margin-left: 24px;
 `
 const Right = styled.div`
 display: flex;
@@ -26,27 +26,37 @@ flex-direction: column;
 justify-content: center;
 align-items: center;
 gap: 15px;
+margin-right: 24px;
 `
 const Headings = styled.div`
 font-size: xx-large;
 letter-spacing: 1px;
 font-weight: 700;
-font-family: 'Oswald', sans-serif;
 cursor: pointer;
 `
+// const Button = styled.button`
+// width: fit-content;
+// border: 0;
+// background-color: #0d6efd;
+// font-size: x-large;
+// font-weight: 500;
+// color: white;
+// border-radius: 4px;
+// font-family: 'Oswald', sans-serif;
+// cursor: pointer;
+// letter-spacing: 2px;
+// word-spacing: 5px;
+// `
 const Button = styled.button`
-width: fit-content;
-border: 0;
-background-color: #0d6efd;
-font-size: x-large;
-font-weight: 500;
+background-color: #00C9A7;
 color: white;
-border-radius: 4px;
-font-family: 'Oswald', sans-serif;
-cursor: pointer;
-letter-spacing: 2px;
-word-spacing: 5px;
+padding: 8px;
+border: 0px;
+font-size: large;
+border-radius: 8px;
 `
+
+
 export default function ImgCover() {
   return (
     <>

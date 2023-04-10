@@ -19,6 +19,7 @@ background-color: #00C9A7;
 width: 100%;
 gap: 16px;
 color: white;
+margin-top: 44px;
 `
 const First = styled.div`
 display: flex;

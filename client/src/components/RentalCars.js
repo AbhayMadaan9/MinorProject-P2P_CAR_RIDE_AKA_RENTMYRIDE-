@@ -1,8 +1,9 @@
-//import Button  from '@mui/material/Button'
 import React from 'react'
 import styled from 'styled-components'
 import car from '../SampleCars.js'
 import CarCard from './CarCard'
+import { Link } from 'react-router-dom/cjs/react-router-dom.min.js'
+
 
 const Main = styled.div`
 display: flex;
@@ -11,6 +12,7 @@ align-items: center;
 justify-content: center;
 width: 100%;
 gap: 10px;
+margin-top: 44px;
 `
 const Headings = styled.div`
 display: flex;
@@ -23,18 +25,26 @@ padding: 35px;
 const Cars = styled.div`
 display: flex;
 flex-direction: row;
-align-items: center;
+align-self: flex-start;
 justify-content: center;
+flex-wrap: wrap;
 `
 const Text = styled.div`
 font-size: x-large;
 letter-spacing: 1px;
 font-weight: 500;
-font-family: 'Oswald', sans-serif;
 cursor: pointer;
 `
 const Butt = styled.div`
 
+`
+const Button = styled.button`
+background-color: #00C9A7;
+color: white;
+padding: 8px;
+border: 0px;
+font-size: large;
+border-radius: 8px;
 `
 
 export default function RentalCars() {
@@ -43,7 +53,7 @@ export default function RentalCars() {
     <Main>
         <Headings>
             <Text>Our Rented Cars</Text>
-            {/* <Butt><Button variant="contained" >Explore More</Button></Butt> */}
+            <Butt><Button><Link to="/cars" style={{textDecoration: "none", color: "white"}}>Explore More</Link></Button></Butt>
         </Headings>
         <Cars>
             {car.map(ite=>(

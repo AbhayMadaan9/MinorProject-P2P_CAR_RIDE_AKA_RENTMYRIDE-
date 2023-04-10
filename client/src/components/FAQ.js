@@ -5,7 +5,8 @@ import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import Button from '@mui/material/Button'
+import { Link } from 'react-router-dom/cjs/react-router-dom';
+
 
 const Main = styled.div`
 display: flex;
@@ -34,13 +35,21 @@ const Heading = styled.div`
 font-size: xx-large;
 letter-spacing: 2px;
 font-weight: 500;
-font-family: 'Oswald', sans-serif;
 cursor: pointer;
 display: flex;
 flex-direction: row;
 align-items: center;
 justify-content: space-between;
 `
+const Button = styled.button`
+background-color: #00C9A7;
+color: white;
+padding: 8px;
+border: 0px;
+font-size: large;
+border-radius: 8px;
+`
+
 
 export default function FAQ() {
   return (
@@ -52,7 +61,8 @@ export default function FAQ() {
         <Questions>
           <Heading>
             <p>FAQ</p>
-            <Button variant="contained" sx={{backgroundColor: "#00C9A7"}}>View all</Button>
+            {/* <Button variant="contained" sx={{backgroundColor: "#00C9A7"}}>View all</Button> */}
+            <Button><Link to="/faqs" style={{textDecoration: "none", color: "white"}}>View all</Link></Button>
             </Heading>
         <Accordion sx={{borderRadius: "10px"}}>
         <AccordionSummary
@@ -61,7 +71,7 @@ export default function FAQ() {
           id="panel1a-header"
           sx={{backgroundColor: "#00C9A7", borderRadius: "10px"}}
         >
-          <Typography>Booking criteria & documents?</Typography>
+          <Typography sx={{color: "white"}}>Booking criteria & documents?</Typography>
         </AccordionSummary>
         <AccordionDetails>
           <Typography>
@@ -76,7 +86,7 @@ export default function FAQ() {
           id="panel2a-header"
           sx={{backgroundColor: "#00C9A7", borderRadius: "10px"}}
         >
-          <Typography>Are there any restricted areas?</Typography>
+          <Typography sx={{color: "white"}}>Are there any restricted areas?</Typography>
         </AccordionSummary>
         <AccordionDetails>
           <Typography>
@@ -91,7 +101,7 @@ export default function FAQ() {
           id="panel2a-header"
           sx={{backgroundColor: "#00C9A7", borderRadius: "10px"}}
         >
-          <Typography>Can I extend/ cancel/ modify?</Typography>
+          <Typography sx={{color: "white"}}>Can I extend/ cancel/ modify?</Typography>
         </AccordionSummary>
         <AccordionDetails>
           <Typography>
@@ -106,7 +116,7 @@ export default function FAQ() {
           id="panel2a-header"
           sx={{backgroundColor: "#00C9A7", borderRadius: "10px"}}
         >
-          <Typography>Is Revv 24/7?</Typography>
+          <Typography sx={{color: "white"}}>Is Revv 24/7?</Typography>
         </AccordionSummary>
         <AccordionDetails>
           <Typography>
