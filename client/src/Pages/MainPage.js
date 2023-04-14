@@ -10,7 +10,8 @@ import {
 import Cars from './Cars';
 import Login from './Login';
 import Signup from './Signup'
-
+import About from './About'
+import Faqs from './Faqs';
 
 export default function () {
   return (
@@ -28,6 +29,12 @@ export default function () {
         </Route>
         <Route exact path="/signup">
           <Signup/>
+        </Route>
+        <Route exact path="/about">
+          <About/>
+        </Route>
+        <Route exact path="/faqs">
+          <Faqs/>
         </Route>
       </Switch>
     </Router >

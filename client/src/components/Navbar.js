@@ -12,7 +12,11 @@ justify-content: space-around;
 align-items: center;
 color: white;
 `
+
 const First = styled.div`
+font-size: x-large;
+font-family: 'Oswald', sans-serif;
+font-weight: 500;
 `
 const Second = styled.div`
 display: flex;
@@ -55,7 +59,8 @@ export default function Navbar() {
     <>
     <Main>
         <First>
-          <Logo src="./logo.jpg" alt="logo" />
+          <p>Rent My Ride</p>
+          {/* <Logo src="./logo.jpg" alt="logo" /> */}
         </First>
         <Second>
             <Headings><Link to="/" style={{textDecoration: "none", color: "white"}}><p>Home</p></Link></Headings>
@@ -64,8 +69,8 @@ export default function Navbar() {
             <Headings><Link to="/contact" style={{textDecoration: "none", color: "white"}}><p>Contact Us</p></Link></Headings>
         </Second>
         <Third>
-           <Headings><p>Login</p></Headings>
-            <Headings><p><Button>Sign Up</Button></p></Headings>
+           <Headings><Link to="/login" style={{textDecoration: "none", color: "white"}}><p>Login</p></Link></Headings>
+            <Headings><Link to="/signup" style={{textDecoration: "none", color: "white"}}><p><Button>Sign Up</Button></p></Link></Headings>
         </Third>
     </Main>
     </>
