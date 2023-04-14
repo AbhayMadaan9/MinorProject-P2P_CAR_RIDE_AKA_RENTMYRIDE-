@@ -111,7 +111,7 @@ export default function About() {
       <Info>
       <Head>
           <Line/>
-          <Heading>Our Vision</Heading>
+          <Heading>About Us</Heading>
         </Head>
         <Text>
         RentMyRide is a decentralized car rental platform that allows users to rent their vehicles to others. Our website is designed to provide a secure and convenient way for car owners to rent their vehicles and for renters to find affordable and reliable transportation. Using cutting-edge technologies such as blockchain and IPFS, RentMyRide offers a unique solution to the traditional car rental industry.
