@@ -34,7 +34,7 @@ display: flex;
 flex-direction: column;
 align-items: center;
 justify-content: center;
-gap: 16px;
+gap: 24px;
 padding: 24px;
 `
 const Img = styled.img`
@@ -64,18 +64,22 @@ export default function Signup() {
         <TextField
               label="Firstname"
               sx={{width: "230px"}}
+              variant='standard'
             />
             <TextField
               label="Lastname"
               sx={{width: "230px"}}
+              variant='standard'
             />
               <TextField
               label="Username"
               sx={{width: "230px"}}
+              variant='standard'
             />
             <TextField
               label="Password"
               sx={{width: "230px"}}
+              variant='standard'
             />
             <Button>Signup</Button>       
         </Right>

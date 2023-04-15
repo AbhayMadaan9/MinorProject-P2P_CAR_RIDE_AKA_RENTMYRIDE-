@@ -12,6 +12,8 @@ import Login from './Login';
 import Signup from './Signup'
 import About from './About'
 import Faqs from './Faqs';
+import Contact from './Contact';
+import Car from './Car';
 
 export default function () {
   return (
@@ -35,6 +37,12 @@ export default function () {
         </Route>
         <Route exact path="/faqs">
           <Faqs/>
+        </Route>
+        <Route exact path="/contact">
+          <Contact/>
+        </Route>
+        <Route exact path="/car">
+          <Car/>
         </Route>
       </Switch>
     </Router >

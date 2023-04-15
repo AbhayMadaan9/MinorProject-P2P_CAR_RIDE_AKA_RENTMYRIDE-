@@ -63,11 +63,13 @@ export default function Login() {
         <Right>
         <TextField
               label="Username"
+              variant='standard'
               sx={{width: "230px"}}
             />
             <TextField
               label="Password"
               sx={{width: "230px"}}
+              variant='standard'
             />
             <Button>Login</Button>
             <span>Forget Password? </span>        
