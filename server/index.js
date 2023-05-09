@@ -22,4 +22,5 @@ app.use(cors({credentials: true, origin: true}))
 
 app.use('/auth', require('./Routes/auth'))
 app.use('/car', require('./Routes/car'))
+app.use('/book', require('./Routes/booking'))
 app.listen(8800);
