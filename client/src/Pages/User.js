@@ -2,6 +2,10 @@ import React from 'react'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom/cjs/react-router-dom'
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import { useContext, useState, useEffect } from "react";
+import { UserContext } from "../App";
+import axios from 'axios';
+
 
 
 const Main = styled.div`
@@ -65,39 +69,107 @@ const Right = styled.div`
 width: 60%;
 `
 
-
-export default function User() {
-    const [CurSec, setCurSec] = React.useState("account")
+const BookingSection = () => {
     return (
-        <>
-            <Main>
-                <Sec1>
-                    <Content><Heading><Link to='/' style={{ textDecoration: "none", color: "#71e5d8" }} >RentMyRide</Link></Heading></Content>
-                    <Content>
-                        <AccountCircleIcon fontSize='large' />
-                        <Heading>Abhay Madaan</Heading>
-                    </Content>
-                </Sec1>
-                <Hr />
-                <Sec2>
-                    <Left>
-                    <Main>
+      <Main>
+        <h3>My Bookings</h3>
+      </Main>
+    );
+  };
+  
+  const AccountSection = ({ user }) => {
+    return (
+      <Main>
+        <h3>Account Details</h3>
         <Account>
-            <img src="" alt="accountPic" />
-            <h3>Abhay Madaan</h3>
-            <p>+91 9999467336</p>
-            <p>madaanabhay9@gmail.com</p>
+        <img src={user.image} alt="accountPic" style={{width: "160px", borderRadius: "1rem", objectFit: "cover"}}/>
+          <h4>Name: {user.name}</h4>
+          <p>Mobile Number: {user.phone_number}</p>
+          <p>Email: {user.email}</p>
+          <Link to="/addCar" style={{ textDecoration: "none"}}>Add Car</Link>
         </Account>
-        <Hr/>
-        <Sec onClick={()=>{setCurSec("booking")}}><h4>My Bookings</h4></Sec>
-        <Hr/>
-        <Sec onClick={()=>{setCurSec("account")}}><h4>Account</h4></Sec>
-        <Hr/>
-        <Sec onClick={()=>{setCurSec("verification")}}><h4>Vehicle Verification</h4></Sec>
-     </Main>
-                    </Left>
-                </Sec2>
-            </Main>
-        </>
-    )
-}
+      </Main>
+    );
+  };
+  const VerificationSection = () => {
+    return (
+      <Main>
+        <h3>Vehicle Information</h3>
+        {/* Add your verification section content here */}
+      </Main>
+    );
+  };
+  
+export default function User() {
+    const { Currentuser } = useContext(UserContext);
+    const [CurSec, setCurSec] = React.useState("account");
+  
+    let section;
+    switch (CurSec) {
+      case "booking":
+        section = <BookingSection />;
+        break;
+      case "account":
+        section = <AccountSection user={Currentuser} />;
+        break;
+      case "verification":
+        section = <VerificationSection />;
+        break;
+      default:
+        section = <AccountSection user={Currentuser} />;
+    }
+    const [bookedCars, setbookedCars] = useState(null)
+    const [UserCar, setUserCar] = useState(null)
+    useEffect(()=>{
+        const getCars = async()=>{
+            const res = await axios.get("http://localhost:8800/book/bookedCars", {withCredentials: true})
+            
+            setbookedCars(res.data)
+        }
+        getCars();
+    })
+    return (
+      <>
+        <Main>
+          <Sec1>
+            <Content>
+              <Heading>
+                <Link to="/" style={{ textDecoration: "none", color: "#71e5d8" }}>
+                  RentMyRide
+                </Link>
+              </Heading>
+            </Content>
+            <Content>
+              <AccountCircleIcon fontSize="large" />
+              <Heading>{Currentuser.username}</Heading>
+            </Content>
+          </Sec1>
+          <Hr />
+          <Sec2>
+            <Left>
+              <Main>
+                <Account>
+                  <img src={Currentuser.image} alt="accountPic" style={{width: "80px", borderRadius: "1rem", objectFit: "cover"}}/>
+                  <h3>{Currentuser.name}</h3>
+                  <p>{Currentuser.phone_number}</p>
+                </Account>
+                <Hr />
+                <Sec onClick={() => setCurSec("booking")}>
+                  <h4>My Bookings</h4>
+                </Sec>
+                <Hr />
+                <Sec onClick={() => setCurSec("account")}>
+                  <h4>Account</h4>
+                </Sec>
+                <Hr />
+                <Sec onClick={() => setCurSec("verification")}>
+                  <h4>Vehicle Information</h4>
+                </Sec>
+              </Main>
+            </Left>
+            <Right>{section}</Right>
+          </Sec2>
+        </Main>
+      </>
+    );
+  }

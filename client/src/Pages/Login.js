@@ -1,6 +1,10 @@
-import React from 'react'
+import { useContext, useState, useEffect } from "react";
+import { UserContext } from "../App";
 import styled from 'styled-components'
 import TextField from '@mui/material/TextField'
+import axios from "axios";
+import Home from "./Home";
+
 
 const Body = styled.div`
 width: 100%;
@@ -23,12 +27,13 @@ width: 100%;
 height: fit-content;
 margin-right: 24px;
 background-color: white;
+flex-wrap: wrap;
 `
 const Left = styled.div`
 width: 600px;
 height: 500px;
 `
-const Right = styled.div`
+const Right = styled.form`
 flex: 1;
 display: flex;
 flex-direction: column;
@@ -52,27 +57,68 @@ border-radius: 8px;
 width: 230px;
 `
 export default function Login() {
+  const [inputs, setInputs] = useState({
+    username: "",
+    password: ""
+  });
+  const [err, setErr] = useState(null);
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setInputs((prevState) => ({
+      ...prevState,
+      [name]: value
+    }));
+  };
+  
+  
+  
+
+  const { Login } = useContext(UserContext);
+
+  const [user, setUser] = useState(JSON.parse(localStorage.getItem("user")) || null);
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    try {
+      console.log(inputs) 
+      const res = await axios.post("http://localhost:8800/auth/login", inputs, {
+        withCredentials: true,
+      });
+      setUser(res.data);
+      localStorage.setItem("user", JSON.stringify(res.data));
+    } catch (err) {
+      setUser(null);
+      setErr("Invalid User!!")
+    }
+    Login(user)
+  }
+
   return (
     <>
     <Body>
     <Main>
         <Left>
         <Img src='./loginphoto.jpg'/>
-
         </Left>
         <Right>
         <TextField
               label="Username"
+              name="username"
               variant='standard'
               sx={{width: "230px"}}
+              onChange={handleChange}
             />
             <TextField
               label="Password"
+              name="password"
+              type="password"
               sx={{width: "230px"}}
               variant='standard'
+              onChange={handleChange}
             />
-            <Button>Login</Button>
-            <span>Forget Password? </span>        
+            {err != null && err}
+            <Button onClick={handleLogin}>Login</Button>
+            <span>Forget Password? </span>   
         </Right>
         
     </Main>

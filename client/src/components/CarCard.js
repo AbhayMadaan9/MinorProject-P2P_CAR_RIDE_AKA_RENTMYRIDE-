@@ -3,7 +3,8 @@ import styled from 'styled-components'
  import LocalGasStationIcon from '@mui/icons-material/LocalGasStation';
  import AirlineSeatReclineNormalIcon from '@mui/icons-material/AirlineSeatReclineNormal';
  import PrecisionManufacturingIcon from '@mui/icons-material/PrecisionManufacturing';
-
+ import { Link } from 'react-router-dom/cjs/react-router-dom.min'
+ 
 
 
 const Main = styled.div`
@@ -58,21 +59,23 @@ width: 100%;
 `
 
 
-export default function CarCard(props) {
-  console.log(props);
+export default function CarCard({car}) {
+
+  const {name, image, transmission, seats, gear, price, id} = car;
+  
   return (
     <>
     <Main>
-        <Img src="https://img.freepik.com/free-vector/modern-blue-urban-adventure-suv-vehicle-illustration_1344-205.jpg?w=740&t=st=1681039732~exp=1681040332~hmac=2531d5152f44ef082fe0242261dc117c7595c0e881c8afc1974e8e92dbbeafc5"/>
-        <Name>Maruti</Name>
+        <Img src={image}/>
+        <Name>{name}</Name>
         <Detail>
           <Detailname><LocalGasStationIcon/> 
-           Diseal</Detailname>
-          <Detailname><AirlineSeatReclineNormalIcon/> 5</Detailname>
-          <Detailname><PrecisionManufacturingIcon/> Automatic</Detailname>
+           {transmission}</Detailname>
+          <Detailname><AirlineSeatReclineNormalIcon/> {seats}</Detailname>
+          <Detailname><PrecisionManufacturingIcon/> {gear}</Detailname>
         </Detail>
-       <Pricename>$540</Pricename>
-       <Button>Book</Button>
+       <Pricename>Rs {price}</Pricename>
+       <Button><Link to={`/show/${id}`} style={{ textDecoration: "none", color: "white" }}><p><Button>Book</Button></p></Link></Button>
     </Main>
     </>
   )

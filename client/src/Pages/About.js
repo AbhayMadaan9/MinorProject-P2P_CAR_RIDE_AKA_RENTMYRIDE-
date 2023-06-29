@@ -6,6 +6,7 @@ import Groups2Icon from '@mui/icons-material/Groups2';
 import RocketLaunchIcon from '@mui/icons-material/RocketLaunch';
 import Footer from '../components/Footer'
 import Remainder from '../components/Remainder'
+import Comparison from './Comparison';
 
 
 const Main = styled.div`
@@ -173,6 +174,14 @@ Join us today and be a part of the sharing economy revolution with RentMyRide!
 <Text>We prioritize the security of our users' information and transactions. All the transactions on our platform are secure and encrypted to protect users' sensitive information from unauthorized access and potential cyber threats.</Text>
           </Feature>
         </Features>
+      </Sec>
+      <Sec>
+      <Head>
+          <Line/>
+          <Heading>Comparison</Heading>
+        </Head>
+      
+        <Comparison/>
       </Sec>
       <Sec>
       <Head>

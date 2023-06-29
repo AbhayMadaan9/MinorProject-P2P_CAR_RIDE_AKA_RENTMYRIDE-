@@ -3,7 +3,8 @@ import styled from 'styled-components'
 import car from '../SampleCars.js'
 import CarCard from './CarCard'
 import { Link } from 'react-router-dom/cjs/react-router-dom.min.js'
-
+import { useContext, useState, useEffect } from "react";
+import { UserContext } from "../App";
 
 const Main = styled.div`
 display: flex;
@@ -48,6 +49,8 @@ border-radius: 8px;
 `
 
 export default function RentalCars() {
+  const {availableCars} = useContext(UserContext);
+console.log(availableCars);
   return (
     <>
     <Main>
@@ -56,7 +59,8 @@ export default function RentalCars() {
             <Butt><Button><Link to="/cars" style={{textDecoration: "none", color: "white"}}>Explore More</Link></Button></Butt>
         </Headings>
         <Cars>
-            {car.map(ite=>(
+          {availableCars.length == 0 && "No car available. Search for different date or time"} 
+            {availableCars.slice(0,4).map(ite=>(
                <CarCard car={ite}/>
             )  
             )}

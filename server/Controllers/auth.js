@@ -21,8 +21,8 @@ const register = async (req, res) => {
             else {
 
                 const q = 
-                    "INSERT INTO user (`username`,`password`, `email`, `wallet_id`, `phone_number`, `name`) VALUE (?)";
-                const values = [req.body.username, hash, req.body.email, req.body.wallet_id, req.body.phone_number, req.body.name];
+                    "INSERT INTO user (`username`,`password`, `email`, `wallet_id`, `phone_number`, `name`, `dob`) VALUE (?)";
+                const values = [req.body.username, hash, req.body.email, req.body.wallet_id, req.body.phone_number, req.body.name, req.body.dob];
                 db.query(q, [values], (err, data) => {
                     if (err) return res.status(500).send(err)
                     else return res.status(200).json(data)
@@ -39,7 +39,7 @@ const login = (req, res) => {
         const q = "SELECT * FROM user WHERE username = ?"; //this will return array of data
         db.query(q, [req.body.username], (err, data) => {
             if (err) return res.status(500).send(err)
-            if (data.length == 0) return res.status(409).json("user not found!!!")
+            if (data.length == 0) return res.status(409).json("user not found")
             bcrypt.compare(req.body.password, data[0].password, function(err, result) {
                 if(result)
                 { 

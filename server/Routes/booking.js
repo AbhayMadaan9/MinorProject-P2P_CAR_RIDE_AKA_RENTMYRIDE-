@@ -7,5 +7,6 @@ const verifyUser = require('../VerifyUser')
 router.post("/:id", verifyUser, book.book)
 router.delete("/:id", verifyUser, book.removeCar)
 router.post("/feedback/:id", verifyUser, book.feedback)
+router.get("/bookedCars", verifyUser, book.getCarsByUserId)
 
 module.exports = router;
