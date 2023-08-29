@@ -135,68 +135,55 @@ flex-wrap: wrap;
 `
 
 export default function CarInfo() {
-    const { Currentuser, Loctime, state } = useContext(UserContext);
-    const [CarDetails, setCarDetails] = useState({})
-    const [CarOwner, setCarOwner] = useState({})
+    const { Currentuser, Loctime, state, CurCarInfo, getCarInfo } = useContext(UserContext);
+    const [CarOwner, setCarOwner] = useState({});
     let { id } = useParams();
-    console.log(id);
+  
     useEffect(() => {
-        const data = async()=>{
-            const res = await axios.get(`http://localhost:8800/car/show/${id}`, {withCredentials: true})
-            setCarDetails(res.data)
-            console.log(CarDetails.name);
+      getCarInfo(id);
+    }, [id]);
+  
+    const [isAdded, setisAdded] = useState(false);
+    const inputs = {
+      cost: CurCarInfo.price
+    };
+  
+ 
+  const [isbooked, setisbooked] = useState(false)
+    const handleBook = async () => {
+      console.log(inputs);
+      const res = await axios.post(`http://localhost:8800/book/${CurCarInfo.id}`, { inputs }, { withCredentials: true });
+      alert("Car booked successfully")
+      setisbooked(true)
+    //   const delres = await axios.delete(`http://localhost:8800/book/${CurCarInfo.id}`, { inputs, withCredentials: true });
+    //   console.log(delres)
+    };
+    if(isbooked)
+    {
+        const delres = async ()=>{
+            await axios.delete(`http://localhost:8800/book/${CurCarInfo.id}`, { inputs, withCredentials: true });
         }
-        data();
-    });
-    
-    useEffect(() => {
-        const info = async()=>{
-            const {user_id} = CarDetails;
-            const res = await axios.get(`http://localhost:8800/car/userinfo/`, {user_id}, {withCredentials: true})
-            setCarOwner(res.data)
-            console.log(CarDetails.user_id);
-        }
-        info();
-    })
-    const [account, setaccount] = React.useState("Not connected")
-
-    React.useEffect(() => {
-        const getAccount = async()=>{
-            const {web3} = state;
-            const accounts = await web3.eth.getAccounts();
-            setaccount(accounts[0]);
-        }
-        state.web3 && getAccount()
-    }, [state, state.web3])
-    const [isAdded, setisAdded] = useState(null)
-    const handleBook = async()=>{
-            // const {contract} = state;
-            // const carinfo = await contract.methods.addCar(CarDetails.id, CarDetails.name, CarDetails.model, CarDetails.price).call();
-            // console.log(carinfo);
-            const inputs = {
-                cost: CarDetails.price,
-                 status: CarDetails.status
-            }
-            const res = await axios.get(`http://localhost:8800/book/${CarDetails.id}`,{inputs}, {withCredentials: true})
-            setisAdded(res.data)
-            }
-const {name, model, gear, transmisssion, seats, rating, username, duration_end_time, duration_start_time, location} = CarDetails;
+         
+      delres();
+    }
+  
+const {name, model, gear, transmission, seats, rating, username, duration_end_time, duration_start_time, location, type} = CurCarInfo;
 
     return (
         <>
             <Main>
                 <Sec1>
                     <Left1>
-                        <Heading>{CarDetails.name}</Heading>
+                        <Heading>{name}</Heading>
                         <List>
-                            <Span>{CarDetails.model}</Span>
-                            <Span>{CarDetails.gear}</Span>
-                            <Span>{CarDetails.transmission}</Span>
-                            <Span>{CarDetails.seats} seats</Span>
+                            <Span>{model}</Span>
+                            <Span>{gear}</Span>
+                            <Span>{transmission}</Span>
+                            <Span>{seats} seats</Span>
                         </List>
                         <List>
                             <StarIcon sx={{ color: "gold" }} />
-                            <Span>{CarDetails.rating}</Span>
+                            <Span>{rating}</Span>
                             <Span>23000km driven</Span>
                         </List>
                     </Left1>
@@ -208,7 +195,7 @@ const {name, model, gear, transmisssion, seats, rating, username, duration_end_t
                 <Hr />
                 <Sec2>
                     <Heading>About the car</Heading>
-                    <Text>This is {CarDetails.name} comes fully loaded with Music system. The smooth driving experience and powerful 1500 CC engine ensurel you have a great ride. You will find always my car extremely clean ready to welcome you. Comfortable cushion seats ensure you suprest dme comfort whibe bele driving. Trust me choosing this car will be best decision for your trip.</Text>
+                    <Text>This is {name} comes fully loaded with Music system. The smooth driving experience and powerful 1500 CC engine ensurel you have a great ride. You will find always my car extremely clean ready to welcome you. Comfortable cushion seats ensure you suprest dme comfort whibe bele driving. Trust me choosing this car will be best decision for your trip.</Text>
                     <Features>
                         <List>
                             <Feature>
@@ -217,28 +204,15 @@ const {name, model, gear, transmisssion, seats, rating, username, duration_end_t
                             </Feature>
                             <Feature>
                                 <HandymanIcon />
-                                <Span>Power Steering</Span>
+                                <Span>{transmission}</Span>
                             </Feature>
                             <Feature>
                                 <HandymanIcon />
-                                <Span>Power Steering</Span>
+                                <Span>{type}</Span>
                             </Feature>
                             <Feature>
                                 <HandymanIcon />
-                                <Span>Power Steering</Span>
-                            </Feature>
-                            <Feature>
-                                <HandymanIcon />
-                                <Span>Power Steering</Span>
-                            </Feature>
-
-                            <Feature>
-                                <HandymanIcon />
-                                <Span>Power Steering</Span>
-                            </Feature>
-                            <Feature>
-                                <HandymanIcon />
-                                <Span>Power Steering</Span>
+                                <Span>{seats}</Span>
                             </Feature>
                         </List>
                     </Features>
@@ -249,12 +223,12 @@ const {name, model, gear, transmisssion, seats, rating, username, duration_end_t
                     <Timings>
                     <Left1>
                        <Span>Pickup</Span> 
-                       <Text>{Loctime.duration_start_time}</Text>
+                       <Text>{duration_start_time}</Text>
                     </Left1>
                     <ArrowRightAltIcon fontSize='large'/>
                     <Left1>
                         <Span>Drop</Span>
-                        <Text>{Loctime.duration_end_time}</Text>
+                        <Text>{duration_end_time}</Text>
                     </Left1>
                     </Timings>
                     {/* <Span>Total duration</Span> */}
@@ -262,13 +236,11 @@ const {name, model, gear, transmisssion, seats, rating, username, duration_end_t
                 <Hr/>
                 <Sec4>
                     <Heading>Car Location</Heading>
-                    <Text>{CarDetails.location}</Text>
-                    {/* <Text>Google Map</Text>
-                    <Text>----km from your location</Text>  */}
+                    <Text>{location}</Text>
                 </Sec4>
                 <Sec4>
                     <Heading>Ratings & Reviews</Heading>
-                    <StarIcon sx={{color: "gold"}}/> {CarDetails.rating}
+                    <StarIcon sx={{color: "gold"}}/> {rating}
                 </Sec4>
                 <Hr/>
                 {/* <Sec4>
@@ -280,7 +252,6 @@ const {name, model, gear, transmisssion, seats, rating, username, duration_end_t
                    
                     <Link to = '/aggrement'>See details</Link>
                     <WhatsApp phone="9999467336" text="Hi, Can I rent your car please confirm with yes or no?" />
-                    {isAdded && "Car added Successfully"}
                     <Button onClick={handleBook}>
                       Book Now
                     </Button>

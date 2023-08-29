@@ -1,15 +1,15 @@
 const db = require('../connect')
 
 
-const book = async(req, res)=>{
-    //on booking the car it is removed from car lists using removeCar func. below
-    const q = "INSERT INTO booking (`user_id_fk`, `cost`, `status`, `car_id_fk`, `transaction_id`) VALUE (?)";
-    const values = [req.id, req.body.cost, req.body.status, req.params.id, req.body.transaction_id];
-    db.query(q, values, (data, err) => {
-        if (err) return res.status(500).send(err)
-        return res.status(200).json("Car booked Successfully!!")
-    })
-}
+const book = async (req, res) => {
+    const q = "INSERT INTO booking (`user_id_fk`, `cost`, `car_id_fk`) VALUES (?, ?, ?)";
+    const values = [req.id, req.body.cost, req.params.id];
+    db.query(q, values, (err, data) => {
+        if (err) return res.status(500).send(err);
+        return res.status(200).json(data);
+    });
+};
+
 
 const removeCar = async(req, res)=>{
     const q = "DELETE FROM car WHERE id = ?";

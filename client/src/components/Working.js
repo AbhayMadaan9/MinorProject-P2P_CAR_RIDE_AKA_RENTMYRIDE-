@@ -55,17 +55,17 @@ export default function Working() {
         <Section>
             <Icon><LocationOnIcon fontSize='large' color='white'/></Icon>
             <Text>Choose Location</Text>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam eligendi possimus quia ipsa hic facilis, perferendis maxime nostrum voluptates accusamus repellendus beatae rem aut aperiam quasi consectetur optio deserunt cum?</p>
+            <p>This could be implemented through a search bar or interactive map where users can input their preferred pick-up location. Additionally, you can provide suggestions or popular locations to facilitate the selection process.</p>
         </Section>
         <Section>
             <Icon><CalendarMonthIcon fontSize='large'/></Icon>
             <Text>Pick Up Date</Text>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam eligendi possimus quia ipsa hic facilis, perferendis maxime nostrum voluptates accusamus repellendus beatae rem aut aperiam quasi consectetur optio deserunt cum?</p>
+            <p>A user-friendly interface with a calendar feature can allow them to select the desired dates easily. Ensure that the system considers minimum rental duration requirements, if any, and displays availability accordingly.</p>
         </Section>
         <Section>
             <Icon><DirectionsCarIcon fontSize='large'/></Icon>
             <Text>Book Your Car</Text>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam eligendi possimus quia ipsa hic facilis, perferendis maxime nostrum voluptates accusamus repellendus beatae rem aut aperiam quasi consectetur optio deserunt cum?</p>
+            <p>Before finalizing the booking, display a summary of the selected vehicle, rental dates, additional services, and total cost. Allow users to review and make any necessary changes. Once confirmed, prompt them to accept the terms and conditions and proceed with payment.</p>
         </Section>
         </Contents>
     </Main>

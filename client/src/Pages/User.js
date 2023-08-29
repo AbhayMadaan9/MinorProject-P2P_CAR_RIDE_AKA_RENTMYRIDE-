@@ -69,41 +69,44 @@ const Right = styled.div`
 width: 60%;
 `
 
-const BookingSection = () => {
-    return (
-      <Main>
-        <h3>My Bookings</h3>
-      </Main>
-    );
-  };
-  
-  const AccountSection = ({ user }) => {
-    return (
-      <Main>
-        <h3>Account Details</h3>
-        <Account>
-        <img src={user.image} alt="accountPic" style={{width: "160px", borderRadius: "1rem", objectFit: "cover"}}/>
-          <h4>Name: {user.name}</h4>
-          <p>Mobile Number: {user.phone_number}</p>
-          <p>Email: {user.email}</p>
-          <Link to="/addCar" style={{ textDecoration: "none"}}>Add Car</Link>
-        </Account>
-      </Main>
-    );
-  };
-  const VerificationSection = () => {
-    return (
-      <Main>
-        <h3>Vehicle Information</h3>
-        {/* Add your verification section content here */}
-      </Main>
-    );
-  };
+
   
 export default function User() {
-    const { Currentuser } = useContext(UserContext);
+    const { Currentuser,CurCarInfo } = useContext(UserContext);
     const [CurSec, setCurSec] = React.useState("account");
-  
+    const BookingSection = () => {
+      return (
+        <Main>
+          <h3>My Bookings</h3>
+        </Main>
+      );
+    };
+    
+    const AccountSection = ({ user }) => {
+      return (
+        <Main>
+          <h3>Account Details</h3>
+          <Account>
+          <img src={user.image} alt="accountPic" style={{width: "160px", borderRadius: "1rem", objectFit: "cover"}}/>
+            <h4>Name: {user.name}</h4>
+            <p>Mobile Number: {user.phone_number}</p>
+            <p>Email: {user.email}</p>
+            <Link to="/addCar" style={{ textDecoration: "none"}}>Add Car</Link>
+          </Account>
+        </Main>
+      );
+    };
+    const VerificationSection = () => {
+      return (
+        <Main>
+          <h3>Vehicle Information</h3>
+      <b>Owner: </b> <p>{CurCarInfo.name}</p>  
+      <b>Model: </b> <p>{CurCarInfo.model}</p>
+      <b>transmission: </b> <p>{CurCarInfo.transmission}</p>
+      <b>Number: </b> <p>{CurCarInfo.number}</p>
+        </Main>
+      );
+    };
     let section;
     switch (CurSec) {
       case "booking":

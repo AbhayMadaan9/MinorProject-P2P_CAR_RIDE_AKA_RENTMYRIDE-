@@ -7,6 +7,7 @@ import RocketLaunchIcon from '@mui/icons-material/RocketLaunch';
 import Footer from '../components/Footer'
 import Remainder from '../components/Remainder'
 import Comparison from './Comparison';
+import Navbar from '../components/Navbar';
 
 
 const Main = styled.div`
@@ -108,6 +109,7 @@ export default function About() {
   return (
     <>
     <Main>
+      <Navbar textcolor="white"/>
       <Sec1>
       <Info>
       <Head>

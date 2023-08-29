@@ -33,12 +33,7 @@ export default function Home() {
   return (
     <>
     <Main>
-      <Nav>
         <Navbar/>
-      </Nav>
-      <Imgcover>
-      <ImgCover/>
-      </Imgcover>
       <Carousels/>
       <SearchCars/>
       <RentalCars/>

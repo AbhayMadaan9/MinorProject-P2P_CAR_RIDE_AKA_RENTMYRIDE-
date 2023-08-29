@@ -61,7 +61,7 @@ console.log(availableCars);
         <Cars>
           {availableCars.length == 0 && "No car available. Search for different date or time"} 
             {availableCars.slice(0,4).map(ite=>(
-               <CarCard car={ite}/>
+               <CarCard car={ite} key={ite.id}/>
             )  
             )}
         </Cars>

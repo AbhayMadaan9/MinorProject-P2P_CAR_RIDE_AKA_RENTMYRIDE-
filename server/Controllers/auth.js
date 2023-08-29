@@ -5,35 +5,51 @@ require('dotenv').config()
 
 
 const register = async (req, res) => {
- 
-    //User exists
-
-    const q = "SELECT username FROM user WHERE username = ?";
-    db.query(q, [req.body.username], (err, data) => {
-        if (err) return res.status(500).send(err)
-        if (data.length) return res.status(409).json("user already exists!!!")
-    })
-    //New User 
-
-    bcrypt.genSalt(10, function (err, salt) {
-        bcrypt.hash(req.body.password, salt, function (err, hash) {
-            if (err) return res.status(500).send(err)
-            else {
-
-                const q = 
-                    "INSERT INTO user (`username`,`password`, `email`, `wallet_id`, `phone_number`, `name`, `dob`) VALUE (?)";
-                const values = [req.body.username, hash, req.body.email, req.body.wallet_id, req.body.phone_number, req.body.name, req.body.dob];
-                db.query(q, [values], (err, data) => {
-                    if (err) return res.status(500).send(err)
-                    else return res.status(200).json(data)
-                })
+    try {
+      // User exists
+      const q = "SELECT username FROM user WHERE username = ?";
+      db.query(q, [req.body.username], (err, data) => {
+        if (err) {
+          return res.status(500).send(err);
+        }
+        if (data.length > 0) {
+          return res.status(500).json("User already exists!!!");
+        }
+  
+        // New User
+        bcrypt.genSalt(10, function (err, salt) {
+          bcrypt.hash(req.body.password, salt, function (err, hash) {
+            if (err) {
+              return res.status(500).send(err);
+            } else {
+              const q =
+                "INSERT INTO user (`username`,`password`, `email`, `wallet_id`, `phone_number`, `name`, `dob`) VALUE (?)";
+              const values = [
+                req.body.username,
+                hash,
+                req.body.email,
+                req.body.wallet_id,
+                req.body.phone_number,
+                req.body.name,
+                req.body.dob,
+              ];
+              db.query(q, [values], (err, data) => {
+                if (err) {
+                  return res.status(500).send(err);
+                } else {
+                  return res.status(200).json(data);
+                }
+              });
             }
+          });
         });
-
-    });
-
-
-}
+      });
+    } catch (error) {
+      console.log(error);
+      return res.status(500).send(error);
+    }
+  };
+  
 const login = (req, res) => {
 
         const q = "SELECT * FROM user WHERE username = ?"; //this will return array of data

@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import TextField from '@mui/material/TextField'
 import axios from "axios";
 import Home from "./Home";
-
+import { Link } from 'react-router-dom/cjs/react-router-dom.min'
 
 const Body = styled.div`
 width: 100%;
@@ -118,7 +118,8 @@ export default function Login() {
             />
             {err != null && err}
             <Button onClick={handleLogin}>Login</Button>
-            <span>Forget Password? </span>   
+            <Link to='/signup'><span>Forget Password?</span></Link>
+               
         </Right>
         
     </Main>

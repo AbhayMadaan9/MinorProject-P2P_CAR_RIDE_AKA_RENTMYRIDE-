@@ -13,6 +13,11 @@ justify-content: space-around;
 align-items: center;
 color: white;
 width: 100%;
+position: sticky;
+top: 0;
+z-index: 2;
+background-color: black;
+opacity: 80%;
 `
 
 const First = styled.div`

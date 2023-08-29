@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import TextField from '@mui/material/TextField'
 import axios from 'axios'
 import { Link } from 'react-router-dom/cjs/react-router-dom.min'
-
+import swal from 'sweetalert';
 
 const Body = styled.div`
 width: 100%;
@@ -74,12 +74,12 @@ export default function Signup() {
 
   const handleClick = async (e) => {
     e.preventDefault();
-    console.log(inputs)
     try {
       const res = await axios.post("http://localhost:8800/auth/register",
         inputs, {
         withCredentials: true,
       });
+      console.log(res)
       setisValid(true);
 
     } catch (err) {
@@ -146,13 +146,11 @@ export default function Signup() {
               required
             />
             {err != null && err}
-            {isValid && "Registered Successfully"}
+            {isValid && alert("Registered Successfully")}
             <Button onClick={handleClick}>Register</Button>
             <Link to="/login" style={{ textDecoration: "none" }}><p>Login</p></Link>
           </Right>
-
         </Main>
-
       </Body>
     </>
   )

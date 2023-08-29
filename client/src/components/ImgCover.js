@@ -66,7 +66,7 @@ export default function ImgCover() {
             {/* <Headings><p>Cruise in Style with RentMyRide's Audi A5 Convertible</p></Headings>
             <Headings><p>Get Off the Beaten Path with RentMyRide's Jeep Wrangler</p></Headings>
             <Headings><p>Feel the Power of the Road with RentMyRide's Dodge Charger</p></Headings> */}
-            <Link to="/show/16" style={{ textDecoration: "none", color: "white" }}><Button>Book Now</Button></Link>
+            <Link to="/show/36" style={{ textDecoration: "none", color: "white" }}><Button>Book Now</Button></Link>
 
         </Left>
         <Right>

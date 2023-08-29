@@ -5,9 +5,10 @@ require('dotenv').config()
 const add = async (req, res) => {
     //we allow single user to add multiple car 
     const q = "SELECT number FROM car WHERE number = ?";
-    db.query(q, [req.body.number, req.id], (err, data) => {
+    db.query(q, [req.body.number], (err, data) => {
         if (err) return res.status(500).send(err)
-        if (data.length) return res.status(409).json("user car already exists!!!")
+        console.log(data.length > 0)
+        if (data.length > 0) return res.status(409).json("user car already exists!!!")
         //New car
 
         bcrypt.genSalt(10, function (err, salt) {
@@ -30,10 +31,11 @@ const add = async (req, res) => {
 }
 
 const listall = async (req, res) => {
-    let q = "SELECT * FROM car WHERE duration_start_date = ? AND duration_end_date = ? AND duration_start_time = ? AND duration_end_time = ? AND location = ?";
-    const queryParams = [req.query.location, req.query.duration_start_date, req.query.duration_end_date, req.query.duration_end_date, req.query.duration_end_time];
+    let q = "SELECT * FROM car  WHERE  duration_end_date = ?";
+    console.log(req.query.duration_end_date)
+    const queryParams = [req.query.duration_end_date];
 
-    // Check if any query parameters are present
+    // Check if any other query parameters are present
     if (req.query.transmission) {
         q += " AND transmission = ?";
         queryParams.push(req.query.transmission);

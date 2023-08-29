@@ -4,7 +4,7 @@ import TextField from '@mui/material/TextField'
 import axios from 'axios'
 import { useContext } from "react";
 import { UserContext } from "../App";
-import { CleaningServices } from '@mui/icons-material';
+
 
 
 const Main = styled.div`
@@ -54,7 +54,7 @@ font-weight: 200;
 const InputField = styled(TextField)`width: 100%; flex: 1`
 
 export default function SearchCars() {
-  const { availableCars, setCars, setLoctime, setLoc } = useContext(UserContext);
+  const { setCars, setLoctime, setLoc } = useContext(UserContext);
   const [inputs, setInputs] = useState({
     location: '',
     duration_start_date: '',
@@ -67,8 +67,11 @@ export default function SearchCars() {
     setLoc(inputs);
     try {
       const res = await axios.get(`http://localhost:8800/car/listall?location=${inputs.location}&duration_start_date=${inputs.duration_start_date}&duration_end_date=${inputs.duration_end_date}&duration_start_time=${inputs.duration_start_time}&duration_end_time=${inputs.duration_end_time}`, { withCredentials: true })
+      
+    console.log(`http://localhost:8800/car/listall?location=${inputs.location}&duration_start_date=${inputs.duration_start_date}&duration_end_date=${inputs.duration_end_date}&duration_start_time=${inputs.duration_start_time}&duration_end_time=${inputs.duration_end_time}`)
       setCars(res.data)
       console.log(res.data)
+      console.log(inputs)
     } catch (error) {
       console.log(error)
     }
@@ -106,6 +109,7 @@ export default function SearchCars() {
       resss = await axios.get(`https://geocode.maps.co/reverse?lat=${loc.latitude}&lon=${loc.longitude}`);
       const {display_name} = resss.data;
       setaddress(display_name)
+      console.log(address)
     }
     getloc();
   },[loc])
@@ -115,16 +119,8 @@ export default function SearchCars() {
       <Main>
         <First><Headings>Find you perfect match</Headings>
           <Textlight>Set your location data time</Textlight></First>
+          <form>
         <Second>
-          {/* <InputField
-            label="Location"
-            variant="outlined"
-            name="location"
-            value={inputs.location}
-            onChange={handleInputChange}
-            required
-          /> */}
-          <Button onClick={handleLocation}>Click to get Location</Button>
           <InputField
             label="PickUp Date"
             type="date"
@@ -179,9 +175,9 @@ export default function SearchCars() {
               step: 300 // 5 min
             }}
           />
-
           <Button onClick={handleClick}>Search Car</Button>
         </Second>
+        </form>
       </Main>
     </>
   )
